@@ -8,7 +8,7 @@ app.use(bodyParse.urlencoded({ extended: true }));
 app.use(express.static(__dirname + "/"));
 
 app.get('/AngularApp.html', function (req, res) {
-  res.sendFile("C:/nodejs/CALCULATOR/AngularApp.html");
+  res.sendFile(__dirname + "/AngularApp.html");
 });
 
 app.get('/AngularApp', function (req, res) {
