@@ -1,0 +1,26 @@
+h1 {
+    text-align: center;
+    font-style: italic;
+    color:red;
+    margin: 75px;
+    }
+
+div 
+    {
+    text-align: center;
+    }
+
+body{
+     background-color: aqua;
+    
+    }
+#id_3{
+        font-weight: bold;
+        font-size: 30px;
+        color:blue;
+    }
+#id_4{
+    font-size: 20px;
+    color:green;
+    font-style: italic;
+    }
