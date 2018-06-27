@@ -1,6 +1,6 @@
 h1 {
     text-align: center;
-    font-style: italic;
+    font-style: bold;
     color:red;
     margin: 75px;
     }
@@ -12,15 +12,24 @@ div
 
 body{
      background-color: aqua;
-    
     }
 #id_3{
-        font-weight: bold;
-        font-size: 30px;
-        color:blue;
+    font-size: 30px;
+    color:blue;
+    font-style: bold;
     }
 #id_4{
     font-size: 20px;
     color:green;
     font-style: italic;
     }
+ input.ng-invalid
+  {
+        color: red;
+        font-weight:bold;
+     }
+input.ng-valid 
+   {
+        color: black;
+     }
+         
