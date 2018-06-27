@@ -3,29 +3,26 @@
 <head>
     <title>DemoApp</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-    <script src="AngularScripts.js"></script>
+    <script src="DemoAppScripts.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <h1> AngularJs DemoAPP</h1>
-<body>
-    <form action="http://127.0.0.1:3000/AngularApp">
-        <div ng-app="DemoApp"  ng-controller="AppCtrl">
-            Enter the 1st number:
-            <input type="text" name="firstnumber" ng-model="firstnumber" id="id_1" />
-            <br>
-            <br> 
-            Enter the 2nd number:
-            <input type="text" name="secondnumber"  ng-model="secondnumber" id="id_2" />
+<body ng-app="DemoApp">
+    <div ng-controller="Controller">
+        <form name="form">
+            <label for="input">Enter the first number: </label>
+            <input type="text" ng-model="formdata.firstnumber" id="input" name="firstnumber11" ng-pattern="regex" required/>
             <br>
             <br>
-            <input type="submit" value="Calculate" id="Button" disabled="disabled" /> 
-            {{firstfun()}}
-            {{check_reload()}}
-            <p id="id_3">Recent Record:  </p>
-            <p id="id_4"></p>
-        </div>
-    </form>
-
+            <label for="input">Enter the second number: </label>
+            <input type="text" ng-model="formdata.secondnumber" id="input1" name="secondnumber11" ng-pattern="regex" required/>
+            <br>
+            <br>
+            <input type="submit" ng-disabled="form.$invalid || form.input.$error.required" ng-click="postRequest()" value="calculate" />   
+            <h3 id="id_3">{{replace}}</h3>
+            <p id="id_4">{{loadDB}}</p>
+        </form>
+    </div>
 </body>
 
 </html>
