@@ -1,1 +1,0 @@
-Number_1 = 85 Number_2 = 25 Product : 2125
