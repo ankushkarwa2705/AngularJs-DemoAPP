@@ -18,9 +18,10 @@
             <input type="text" ng-model="formdata.secondnumber" id="input1" name="secondnumber11" ng-pattern="regex" required/>
             <br>
             <br>
-            <input type="submit" ng-disabled="form.$invalid || form.input.$error.required" ng-click="postRequest()" value="calculate" />   
-            <h3 id="id_3">{{replace}}</h3>
-            <p id="id_4">{{loadDB}}</p>
+            <input type="submit" ng-disabled="form.$invalid || form.input.$error.required" ng-click="save_data()" value="calculate" />   
+            <br>
+            <p>Last Database record </p>
+            <p ng-bind="LastDBEntry"></p>
         </form>
     </div>
 </body>
