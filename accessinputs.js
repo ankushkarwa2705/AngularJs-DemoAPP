@@ -1,6 +1,5 @@
 var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb://localhost:27017/";
-var fs = require('fs');
 var express = require('express');
 var bodyParse = require('body-parser');
 var app = express();
@@ -26,7 +25,6 @@ app.get('/getData', (req, resp) => {
         console.log(inserttext);
         response = { number11: num1, number22: num2, product12: mul_result };
         resp.send(JSON.stringify(response));
-
         console.log(" sent response as : " + response.number11 + " " + response.number22 + " " + response.product12);
       });
     });
@@ -34,9 +32,6 @@ app.get('/getData', (req, resp) => {
 });
 
 app.post('/saveData', function (req, result) {
-  console.log(req.body.firstnumber + " " + req.body.secondnumber);
-  result.end();
-
   MongoClient.connect(url, function (err, db) {
     if (err) throw err;
     var dbo = db.db("caldb");
@@ -52,6 +47,7 @@ app.post('/saveData', function (req, result) {
       db.close();
     });
   });
+  result.end();
 });
 
 var server = app.listen(3000, function () {
