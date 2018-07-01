@@ -10,17 +10,21 @@
 <body ng-app="DemoApp">
     <div ng-controller="Controller">
         <form name="form">
-            <label for="input">Enter the first number: </label>
-            <input type="text" ng-model="formdata.firstnumber" id="input" name="firstnumber11" ng-pattern="regex" required/>
+            Enter the first number:
+            <input type="text" ng-model="formdata.firstnumber" name="firstnumber11" ng-pattern="regex" required/>
+            <span  ng-show = "form.firstnumber11.$invalid">Invalid Input!!
+            </span>
             <br>
             <br>
-            <label for="input">Enter the second number: </label>
-            <input type="text" ng-model="formdata.secondnumber" id="input1" name="secondnumber11" ng-pattern="regex" required/>
+            Enter the second number: 
+            <input type="text" ng-model="formdata.secondnumber" name="secondnumber11" ng-pattern="regex" required/>
+            <span  ng-show = "form.secondnumber11.$invalid">Invalid Input!!
+            </span>
             <br>
             <br>
-            <input type="submit" ng-disabled="form.$invalid || form.input.$error.required" ng-click="save_data()" value="calculate" />   
+            <input type="submit" ng-disabled="form.$invalid || form.$error.required" ng-click="save_data()" value="calculate" />   
             <br>
-            <p>Last Database record </p>
+            <p>Last Database record : </p>
             <p ng-bind="LastDBEntry"></p>
         </form>
     </div>
