@@ -5,9 +5,27 @@ var bodyParse = require('body-parser');
 var app = express();
 var num1, num2, mul_result;
 
-app.use(bodyParse.urlencoded({ extended: true }));
 app.use(bodyParse.json());
 app.use(express.static(__dirname + "/"));
+
+app.post('/saveData', function (req, res) {
+  MongoClient.connect(url, function (err, db) {
+    if (err) throw err;
+    var dbo = db.db("caldb");
+    var number1 = req.body.firstnumber;
+    var number2 = req.body.secondnumber;
+    var multiply = number1 * number2;
+    var myobj = { Number_1: number1, Number_2: number2, Result: multiply };
+    console.log(myobj);
+    dbo.collection("multiplydb").insertOne(myobj, function (err, result) {
+      if (err) throw err;
+      console.log("1 document inserted");
+      console.log(result.insertedCount);
+      db.close();
+    });
+  });
+  res.end();
+});
 
 app.get('/getData', (req, resp) => {
   MongoClient.connect(url, function (err, db) {
@@ -29,25 +47,6 @@ app.get('/getData', (req, resp) => {
       });
     });
   });
-});
-
-app.post('/saveData', function (req, result) {
-  MongoClient.connect(url, function (err, db) {
-    if (err) throw err;
-    var dbo = db.db("caldb");
-    var number1 = req.body.firstnumber;
-    var number2 = req.body.secondnumber;
-    var multiply = number1 * number2;
-    var myobj = { Number_1: number1, Number_2: number2, Result: multiply };
-    console.log(myobj);
-    dbo.collection("multiplydb").insertOne(myobj, function (err, res) {
-      if (err) throw err;
-      console.log("1 document inserted");
-      console.log(res.insertedCount);
-      db.close();
-    });
-  });
-  result.end();
 });
 
 var server = app.listen(3000, function () {
